@@ -1,5 +1,6 @@
 # Python virtual environment
 Amuzeek_Backend/myenv/
+git_token
 
 # Environment variables
 .env
