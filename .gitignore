@@ -1,0 +1,5 @@
+# Python virtual environment
+Amuzeek_Backend/myenv/
+
+# Environment variables
+.env
