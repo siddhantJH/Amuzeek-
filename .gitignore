@@ -3,6 +3,8 @@ Amuzeek_Backend/myenv/
 git_token
 gitgen.pub
 gitgen
+notes.md
+
 
 # Environment variables
 .env
