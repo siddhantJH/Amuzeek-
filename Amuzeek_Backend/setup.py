@@ -5,7 +5,8 @@ setup(
     version="0.1.0",
     description="Audio streaming backend utilities",
     author="Siddhant Jha",
-    packages=find_packages(),
+    packages=find_packages(where="src"),
+    package_dir={"": "src"},
     install_requires=[
         "fastapi",
         "uvicorn",
