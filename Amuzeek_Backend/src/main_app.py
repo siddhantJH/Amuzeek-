@@ -10,6 +10,8 @@ import os
 from controllers.song_player import SongPlayer
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
+from fastapi.staticfiles import StaticFiles
+
 
 
 
@@ -20,8 +22,17 @@ class SongDetails(BaseModel):
 
 app=FastAPI()
 
-@app.post('/streamSong')
-def startStreaming(data:SongDetails):
-    print("data--->",data)
-    song_bytes=[]
-    return StreamingResponse([SongPlayer().start_streaming()],media_type='audio/wav')
+@app.post('/fetchMPD')
+async def startStreaming(data:SongDetails):
+    obj=SongPlayer()
+    # obj.create_manifest_for_songs()
+    # obj.prepare_mpp_for_streaming()
+    return StreamingResponse(obj.send_manifect_via_streaming(),media_type="application/dash+xml")
+
+
+
+app.mount(
+    "/music",
+    StaticFiles(directory="/home/siddhant/Amuzeek/Amuzeek_Backend/src/songs"),
+    name="songs"
+)
